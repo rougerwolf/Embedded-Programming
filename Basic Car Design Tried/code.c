@@ -1,0 +1,60 @@
+String a;
+String input = "Enter Your Command";
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(12,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(3,OUTPUT);
+}
+void loop()
+{ 
+  Serial.println(input);
+  while (Serial.available()==0){
+    a=Serial.readString();
+    if(a=="FORWARD"||a=="Forward"||a=="forward")
+    {
+      digitalWrite(6,0);
+      digitalWrite(5,1);
+      digitalWrite(3,0);
+      digitalWrite(4,1);
+    }
+    if(a=="BACKWARD"||a=="Backward"||a=="backward")
+    {   
+      digitalWrite(6,1);
+      digitalWrite(5,0);
+      digitalWrite(3,1);
+      digitalWrite(4,0);
+    }
+    if(a=="LEFT"||a=="Left"||a=="left")
+    {
+      digitalWrite(12,0);
+      digitalWrite(11,1);
+      digitalWrite(9,0);
+      digitalWrite(10,1);
+    }
+    if(a=="RIGHT"||a=="Right"||a=="right")
+    {
+      digitalWrite(12,1);
+      digitalWrite(11,0);
+      digitalWrite(9,1);
+      digitalWrite(10,0);
+    } 
+    if(a=="STOP"||a=="Stop"||a=="stop")
+    {	
+      digitalWrite(12,0);
+      digitalWrite(11,0);
+      digitalWrite(9,0);
+      digitalWrite(10,0);
+      digitalWrite(6,0);
+      digitalWrite(5,0);
+      digitalWrite(4,0);
+      digitalWrite(3,0);
+    }
+    }
+ }
